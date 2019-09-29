@@ -1,27 +1,40 @@
-class Person {
+class Person{
     constructor(name = 'Anonymous', age = 0){
-        this.name = name
-        this.age = age
-
+        this.name = name;
+        this.age = age;
+        
     }
 
     getGreeting(){
-        return `Hi Iam ${this.name}`
+        //return  'Hi, '+this.name +' !';
+        return `Hi, I am ${this.name}!`;
     }
 
     getDescription(){
-        return `${this.name} is ${this.age} years old`
+        return `${this.name} is ${this.age} years old`;
     }
 }
 
-class Students extends Person{
+class Student extends Person {
     constructor(name, age, major = 'Computer Science'){
-        super(name, age)
-        this.major = major
+        super(name, age);//Calling the parent constructor function
+        this.major = major;
+    }
+
+    hasMajor(){
+        return !!this.major;
+
+    }
+
+    getDescription(){
+        let description = super.getDescription();
+        return  description + 'his major is ' + this.major;
     }
 }
 
-const me = new Person('Maros Silva',40);
-const student = new Students ('Marcos', 40, 'Software Dev')
+const me = new Person('Marcos Silva');
 
-console.log(student)
+const student = new Student();
+
+console.log(me.getDescription());
+console.log(student.getDescription());
